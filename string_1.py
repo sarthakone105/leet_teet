@@ -21,4 +21,4 @@ def add_strngs(string1, string2):
     return new
 
 
-print(add_strngs(string1, string2))
+print(add_strngs(string1, string2), "blah")
