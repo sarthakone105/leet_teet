@@ -8,7 +8,7 @@ echo -e "\nTotal number of goals in all games from winning teams:"
 echo "$($PSQL "SELECT SUM(winner_goals) FROM games")"
 
 echo -e "\nTotal number of goals in all games from both teams combined:"
-echo "$($PSQL "SELECT SUM(winner_goals) + SUM(opponent_goals) FROM games")"
+echo "$($PSQL "SELECT SUM(winner_goals + opponent_goals) FROM games")"
 
 echo -e "\nAverage number of goals in all games from the winning teams:"
 echo "$($PSQL "SELECT AVG(winner_goals) FROM games")"
@@ -17,7 +17,7 @@ echo -e "\nAverage number of goals in all games from the winning teams rounded t
 echo "$($PSQL "SELECT ROUND(AVG(winner_goals), 2) FROM games")"
 
 echo -e "\nAverage number of goals in all games from both teams:"
-echo "$($PSQL "SELECT AVG(winner_goals) + AVg(opponent_goals) FROM games")"
+echo "$($PSQL "SELECT AVG(winner_goals + opponent_goals) FROM games")"
 
 echo -e "\nMost goals scored in a single game by one team:"
 echo "$($PSQL "SELECT MAX(winner_goals) FROM games")"
@@ -39,3 +39,4 @@ echo "$($PSQL "SELECT year, name  FROM teams INNER JOIN games ON teams.team_id =
 
 echo -e "\nList of teams that start with 'Co':"
 echo "$($PSQL "SELECT DISTINCT(name) FROM teams INNER JOIN games ON teams.team_id = games.winner_id OR teams.team_id = games.opponent_id WHERE name LIKE 'Co%' ORDER BY name")"
+
